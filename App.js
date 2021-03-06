@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView, ScrollView } from "react-native";
 import Header from "./components/header";
 import Addtodo from "./components/Addtodo";
 import Todos from "./components/Todos";
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import firebase from "./firebase";
 
 const App = () => {
@@ -11,9 +12,15 @@ const App = () => {
   const [idOfUpdate, setIdOfUpdate] = useState(null);
   const [truth, setTruth] = useState();
 
+  const firestore = firebase.firestore();
+  const messagesRef = firestore.collection("t");
+  const query = messagesRef;
+  const [messages] = useCollectionData(query, { idField: 'id' });
+
+
   useEffect(() => {
     populate();
-  }, []);
+  }, [messages]);
 
   useEffect(() => {
     let id = idOfUpdate;

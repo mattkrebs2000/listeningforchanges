@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TodoItem from "./TodoItem";
-import { TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
+
+
 
 const Todos = ({ todos, markComplete, delTodo }) => {
-  return todos.map((todo) => (
+  
+  return ( todos.map((todo) => (
     
     <TodoItem
       key={todo.id}
@@ -11,7 +14,10 @@ const Todos = ({ todos, markComplete, delTodo }) => {
       markComplete={markComplete}
       delTodo={delTodo}
     />
-  ));
+  ))
+  
+
+  )
 };
 
 export default Todos;
