@@ -19,7 +19,9 @@ const App = () => {
 
 
   useEffect(() => {
+    if (messages) {
     populate();
+    }
   }, [messages]);
 
   useEffect(() => {
